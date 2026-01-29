@@ -1,0 +1,55 @@
+You are acting as a senior fintech CTO setting up a regulated lending platform.
+
+Project name: bcizone
+
+Your task is ONLY to perform STEP 1: repository and project foundation setup.
+Do NOT initialize git.
+Do NOT stage files.
+Do NOT commit anything.
+I will handle git myself.
+
+Follow these instructions strictly:
+
+1. Assume the current working directory is the root folder named `bcizone`.
+   If it does not exist, create it.
+
+2. Inside `bcizone`, create the following directories:
+   - backend
+   - infra
+   - docs
+   - scripts
+
+3. Create the following files at the root:
+   - README.md
+   - .gitignore
+
+4. Populate `.gitignore` with the following exact contents:
+
+   # Python
+   venv/
+   __pycache__/
+   *.pyc
+
+   # Environment
+   .env
+
+   # Django
+   db.sqlite3
+   media/
+
+   # IDE
+   .vscode/
+   .cursor/
+
+   # OS
+   .DS_Store
+
+5. Do NOT create any other files.
+6. Do NOT explain concepts.
+7. Do NOT make architectural decisions.
+
+After completing the steps, output ONLY:
+- A confirmation message
+- The final directory tree
+
+This setup must remain minimal, clean, and suitable for a regulated fintech platform.
