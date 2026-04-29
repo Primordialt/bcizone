@@ -1,4 +1,5 @@
 from django.contrib.auth import get_user_model
+from django.conf import settings
 from rest_framework import status
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
@@ -18,13 +19,14 @@ class SignupView(APIView):
         serializer.is_valid(raise_exception=True)
         user = serializer.save()
         code = generate_otp(user.phone_number)
-        return Response(
-            {
-                "message": "User created. Complete verification with OTP.",
-                "otp_code": code,
-            },
-            status=status.HTTP_201_CREATED,
-        )
+        response_data = {
+            "message": "User created. Complete verification with OTP.",
+        }
+        # In production, avoid returning OTPs in responses.
+        if getattr(settings, "DEBUG", False):
+            response_data["otp_code"] = code
+
+        return Response(response_data, status=status.HTTP_201_CREATED)
 
 
 class VerifyOTPView(APIView):
