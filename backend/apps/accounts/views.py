@@ -8,6 +8,8 @@ from rest_framework.views import APIView
 from .serializers import OTPVerifySerializer, SignupSerializer
 from .services import generate_otp, verify_otp
 
+from apps.devices.services import register_device
+
 User = get_user_model()
 
 
@@ -44,11 +46,18 @@ class VerifyOTPView(APIView):
                 status=status.HTTP_400_BAD_REQUEST,
             )
 
-        updated = User.objects.filter(phone_number=phone_number).update(is_active=True)
-        if not updated:
+        user = User.objects.filter(phone_number=phone_number).first()
+        if not user:
             return Response(
                 {"detail": "No user found for this phone number."},
                 status=status.HTTP_404_NOT_FOUND,
             )
+
+        if not user.is_active:
+            user.is_active = True
+            user.save(update_fields=["is_active"])
+
+        # Register/update device metadata on successful activation.
+        register_device(user, request)
 
         return Response({"message": "Account activated."})
