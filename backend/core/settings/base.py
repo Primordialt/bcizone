@@ -5,7 +5,10 @@ Django settings for core project.
 from datetime import timedelta
 
 import environ
+import sentry_sdk
 from pathlib import Path
+from sentry_sdk.integrations.celery import CeleryIntegration
+from sentry_sdk.integrations.django import DjangoIntegration
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
@@ -27,6 +30,9 @@ INSTALLED_APPS = [
     "apps.devices",
     "apps.risk",
     "apps.loans",
+    "apps.repayments",
+    "apps.disbursements",
+    "apps.notifications",
 ]
 
 MIDDLEWARE = [
@@ -90,3 +96,41 @@ SIMPLE_JWT = {
     "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
     "ROTATE_REFRESH_TOKENS": False,
 }
+
+CELERY_BROKER_URL = "redis://localhost:6379/0"
+CELERY_RESULT_BACKEND = "redis://localhost:6379/0"
+CELERY_ACCEPT_CONTENT = ["json"]
+CELERY_TASK_SERIALIZER = "json"
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {
+        "structured": {
+            "format": (
+                "%(asctime)s level=%(levelname)s logger=%(name)s "
+                "module=%(module)s message=%(message)s"
+            ),
+        },
+    },
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+            "formatter": "structured",
+        },
+    },
+    "root": {
+        "handlers": ["console"],
+        "level": "INFO",
+    },
+}
+
+sentry_sdk.init(
+    dsn=env("SENTRY_DSN", default=None),
+    integrations=[
+        DjangoIntegration(),
+        CeleryIntegration(),
+    ],
+    traces_sample_rate=1.0,
+    send_default_pii=True,
+)

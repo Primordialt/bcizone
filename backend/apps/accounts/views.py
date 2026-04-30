@@ -9,6 +9,7 @@ from .serializers import OTPVerifySerializer, SignupSerializer
 from .services import generate_otp, verify_otp
 
 from apps.devices.services import register_device
+from apps.notifications.services import send_otp_notification
 
 User = get_user_model()
 
@@ -21,6 +22,7 @@ class SignupView(APIView):
         serializer.is_valid(raise_exception=True)
         user = serializer.save()
         code = generate_otp(user.phone_number)
+        send_otp_notification(user, code)
         response_data = {
             "message": "User created. Complete verification with OTP.",
         }

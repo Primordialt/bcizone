@@ -17,8 +17,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
+from core.views import sentry_test_error
+
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/auth/", include("apps.accounts.urls")),
     path("api/loans/", include("apps.loans.urls")),
+    path("api/test-error/", sentry_test_error),
 ]

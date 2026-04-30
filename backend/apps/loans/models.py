@@ -6,8 +6,10 @@ from django.db import models
 class LoanStatus(models.TextChoices):
     PENDING = "PENDING", "PENDING"
     APPROVED = "APPROVED", "APPROVED"
+    DISBURSED = "DISBURSED", "DISBURSED"
     DECLINED = "DECLINED", "DECLINED"
     REVIEW = "REVIEW", "REVIEW"
+    REPAID = "REPAID", "REPAID"
 
 
 class LoanApplication(models.Model):
@@ -21,6 +23,7 @@ class LoanApplication(models.Model):
 
     interest = models.DecimalField(max_digits=12, decimal_places=2)
     total_repayment = models.DecimalField(max_digits=12, decimal_places=2)
+    outstanding_balance = models.DecimalField(max_digits=12, decimal_places=2, default=0)
 
     risk_score = models.IntegerField()
     risk_level = models.CharField(max_length=10)
