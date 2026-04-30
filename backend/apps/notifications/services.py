@@ -63,7 +63,6 @@ def send_notification(user, event_type, channel="SMS", context=None):
         send_notification_task.delay(str(notification.id))
         return notification
     except Exception:
-        logger.error("Test error for Sentry", exc_info=True)
         logger.exception(
             "Notification processing error.",
             extra={"event_type": event_type, "channel": channel, "user_id": str(user.id)},

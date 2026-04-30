@@ -1,6 +1,13 @@
+import logging
+
+from apps.kyc.models import KYCProfile
+
 from .enums import DecisionType, RiskLevel
 from .models import RiskAssessment
 from .rules import check_account_age, check_device_count, check_new_device
+
+logger = logging.getLogger(__name__)
+KYC_RISK_SCORE_BONUS = 25
 
 
 def calculate_risk(user, context):
@@ -18,6 +25,14 @@ def calculate_risk(user, context):
     account_age_score = check_account_age(user)
 
     total_score = new_device_score + device_count_score + account_age_score
+    kyc_profile = KYCProfile.objects.filter(user=user).first()
+    kyc_risk_applied = bool(kyc_profile and kyc_profile.risk_flag)
+    if kyc_risk_applied:
+        total_score += KYC_RISK_SCORE_BONUS
+        logger.error(
+            "KYC flagged risk during risk assessment.",
+            extra={"user_id": str(user.id), "kyc_profile_id": str(kyc_profile.id)},
+        )
 
     # Decision thresholds (centralized for maintainability).
     if total_score < 30:
@@ -30,10 +45,15 @@ def calculate_risk(user, context):
         risk_level = RiskLevel.HIGH
         decision = DecisionType.DECLINE
 
+    if kyc_risk_applied:
+        decision = DecisionType.REVIEW
+        risk_level = RiskLevel.MEDIUM if total_score <= 70 else RiskLevel.HIGH
+
     reason_parts = [
         f"new_device={new_device_score}",
         f"device_count={device_count_score}",
         f"account_age={account_age_score}",
+        f"kyc_risk_bonus={KYC_RISK_SCORE_BONUS if kyc_risk_applied else 0}",
         f"total_score={total_score}",
     ]
 

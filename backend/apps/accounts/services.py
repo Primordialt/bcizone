@@ -2,6 +2,7 @@ import logging
 import random
 from datetime import timedelta
 
+from django.core.exceptions import ValidationError
 from django.db import transaction
 from django.utils import timezone
 
@@ -12,6 +13,8 @@ logger = logging.getLogger(__name__)
 
 OTP_EXPIRY = timedelta(minutes=5)
 OTP_RESEND_COOLDOWN = timedelta(seconds=60)
+OTP_RATE_WINDOW = timedelta(minutes=10)
+MAX_OTP_PER_WINDOW = 3
 
 
 def _mask_phone_number(phone_number: str) -> str:
@@ -31,6 +34,18 @@ def generate_otp(phone_number):
     with transaction.atomic():
         now = timezone.now()
         cooldown_start = now - OTP_RESEND_COOLDOWN
+        otp_window_start = now - OTP_RATE_WINDOW
+
+        otp_requests_in_window = OTP.objects.filter(
+            phone_number=phone_number,
+            created_at__gte=otp_window_start,
+        ).count()
+        if otp_requests_in_window >= MAX_OTP_PER_WINDOW:
+            logger.error(
+                "OTP request rate limit exceeded.",
+                extra={"phone_number": _mask_phone_number(phone_number)},
+            )
+            raise ValidationError("Too many OTP requests")
 
         existing = (
             OTP.objects.filter(
