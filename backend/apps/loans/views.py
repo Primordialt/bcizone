@@ -7,8 +7,18 @@ from rest_framework.views import APIView
 
 from apps.devices.services import get_user_device_count
 
+from .models import LoanApplication
 from .serializers import ApplyLoanSerializer, LoanApplicationSerializer
 from .services import process_loan_application
+
+
+class LoanListView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        loans = LoanApplication.objects.filter(user=request.user).order_by("-created_at")
+        data = LoanApplicationSerializer(loans, many=True).data
+        return Response(data)
 
 
 class ApplyLoanView(APIView):

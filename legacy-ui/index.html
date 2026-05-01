@@ -1,0 +1,621 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+
+<head>
+    <title>BCI - Bajol Capital</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="robots" content="index, follow">
+    <meta name="apple-mobile-web-app-title" content="Bajol Capital" />
+    <meta name="application-name" content="Bajol Capital" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta name="description" content="Plan, Save &amp; Invest" />
+    <link rel="shortcut icon" href="public/asset/images/favicon.png" />
+    <link rel="stylesheet" href="public/front/css/theme.css" type="text/css" media="all">
+    <script src="../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="d2b5fa30d91b46ccf0f11348-|49"></script><link rel="preload" media="screen" href="public/front/vendor/boxicons/css/boxicons.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <script src="../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="d2b5fa30d91b46ccf0f11348-|49"></script><link rel="preload" media="screen" href="public/front/vendor/lightgallery/css/lightgallery-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <script src="../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="d2b5fa30d91b46ccf0f11348-|49"></script><link rel="preload" media="screen" href="public/front/vendor/swiper/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <script src="../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="d2b5fa30d91b46ccf0f11348-|49"></script><link rel="preload" href="public/front/css/cookie.css" type="text/css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="stylesheet" href="public/front/css/toast.css" type="text/css">
+    <link href="public/asset/fonts/fontawesome/css/all.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="../../cdn.jsdelivr.net/gh/lipis/flag-icons%406.6.6/css/flag-icons.min.css" />
+
+    
+    <style>
+        @font-face {
+        font-family: Graphik;
+        font-weight: 400;
+        src: url(public/asset/fonts/Graphik/GraphikRegular.otf);
+    }
+
+    @font-face {
+        font-family: Graphik;
+        font-weight: 500;
+        src: url(public/asset/fonts/Graphik/GraphikRegular.otf);
+    }
+
+    @font-face {
+        font-family: Graphik;
+        font-weight: 700;
+        src: url(public/asset/fonts/Graphik/GraphikMedium.otf);
+    }
+
+    @font-face {
+        font-family: Graphik;
+        font-weight: 800;
+        src: url(public/asset/fonts/Graphik/GraphikBold.otf);
+    }
+
+    @font-face {
+        font-family: Graphik;
+        font-weight: 900;
+        src: url(public/asset/fonts/Graphik/GraphikMedium.otf);
+    }
+</style>
+
+<style>
+
+.iti {
+    position: relative;
+    display: block;
+}
+
+body
+{
+    font-family: "Graphik", sans-serif;
+}
+pre,code,kbd,samp
+{
+    font-family: "Graphik", Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+}
+.tooltip
+{
+    font-family: "Graphik", sans-serif;
+}
+.popover
+{
+    font-family: "Graphik", sans-serif;
+}
+.text-monospace
+{
+    font-family: "Graphik", Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace !important;
+}
+.btn-group-colors > .btn:before
+{
+    font-family: "Graphik", sans-serif;
+}
+.has-danger:after
+{
+    font-family: 'Graphik';
+}
+.fc-icon
+{
+    font-family: "Graphik", sans-serif;
+}
+.ql-container
+{
+    font-family: "Graphik", sans-serif;
+}
+</style>
+
+<style>
+    .page-loading {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        -webkit-transition: all .4s .2s ease-in-out;
+        transition: all .4s .2s ease-in-out;
+        background-color:#fff;
+        visibility: hidden;
+        z-index: 9999;
+    }
+
+    .page-loading.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .page-loading-inner {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+        -webkit-transition: opacity .2s ease-in-out;
+        transition: opacity .2s ease-in-out;
+        opacity: 0;
+    }
+
+    .page-loading.active>.page-loading-inner {
+        opacity: 1;
+    }
+
+    .page-loading-inner>span {
+        display: block;
+        font-size: 1rem;
+        font-weight: normal;
+        color: #000;
+    }
+
+    .page-spinner {
+        display: inline-block;
+        width: 2.75rem;
+        height: 2.75rem;
+        margin-bottom: .75rem;
+        vertical-align: text-bottom;
+        border: .15em solid #820cd7;
+        border-right-color: transparent;
+        border-radius: 50%;
+        -webkit-animation: spinner .75s linear infinite;
+        animation: spinner .75s linear infinite;
+    }
+
+    @-webkit-keyframes spinner {
+        100% {
+            -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+        }
+    }
+
+    @keyframes spinner {
+        100% {
+            -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+        }
+    }
+</style></head>
+
+<body>
+    <main class="page-wrapper">
+        <header class="header navbar navbar-expand-lg position-absolute navbar-sticky  navbar-dark ">
+            <div class="container px-3">
+                <a href="https://bajolcapital.com/" class="navbar-brand pe-3">
+                                        <img src="public/asset/images/dark_logo2.png"  width="200" alt="Bajol Capital" loading="lazy">
+                                    </a>
+                <div id="navbarNav" class="offcanvas offcanvas-end mt-3">
+                    <div class="offcanvas-header border-bottom">
+                        <h5 class="offcanvas-title">Menu</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a href="about.html" class="nav-link fw-medium fs-sm">ABOUT</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="blog.html" class="nav-link fw-medium fs-sm">BLOG</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="help_center.html" class="nav-link fw-medium fs-sm">FAQ</a>
+                            </li>
+                            <li class="nav-item d-md-none d-sm-block">
+                                <a href="login.html" class="nav-link fw-medium fs-sm">Sign in</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <button type="button" class="navbar-toggler" data-bs-toggle="offcanvas" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <a href="login.html" class="d-none d-lg-inline-flex me-4 text-decoration-none  text-white " rel="noopener">
+                    Log In
+                </a>
+                <a href="register/create_account.html" class="btn btn-info btn-sm fs-sm rounded-pill d-none d-lg-inline-flex" rel="noopener">
+                    Register <i class="fal fa-angle-right mx-2"></i>
+                </a>
+            </div>
+        </header>
+        <section class="overflow-hidden pt-5 pb-1 bg-dark dd-bg">
+    <div class="container pt-3 pt-sm-4 pt-xl-5">
+        <div class="row">
+            <div class="col-md-6 d-flex flex-column mt-md-4 pt-5 pb-3 pb-sm-4 py-md-5">
+                <h1 class="display-5 pb-3 text-white">
+                    Smart Loans for Every Need
+                </h1>
+                <p class="fs-3 text-start text-md-start pb-2 pb-md-3 mb-3 text-white">At <strong>BCI</strong>, we make financing simple and accessible. We’ve got you covered with flexible terms and quick approvals.</p>
+                <div class="d-md-flex align-items-md-start">
+                    <a href="register/create_account.html" class="btn btn-info flex-shrink-0 me-md-4 mb-md-0 mb-sm-4 mb-3 rounded-pill">Get a Loan Today</a>
+                </div>
+                <div class="d-flex align-items-center justify-content-center justify-content-md-start text-start pt-4 pt-lg-5 mt-xxl-5">
+                    <div class="text-light">400k+ users already with us</div>
+                </div>
+            </div>
+            <div class="col-md-6 text-md-end text-center pt-5">
+                <img src="public/asset/images/section_111.png" style="max-width:100%; height:auto;">
+            </div>
+        </div>
+    </div>
+</section>
+<section class="container py-5 mt-md-3 my-lg-5">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-4 px-4">
+                    <img src="public/asset/images/section_6.jpg" class="rounded-5" alt="Invest">
+                    <div class="pt-4 text-center">
+                        <h3 class="text-dark">Personal Loans</h3>
+                        <p class="text-dark">Handle life needs quickly and simply.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 px-4">
+                    <img src="public/asset/images/section_7.jpg" class="rounded-5" alt="Savings">
+                    <div class="pt-4 text-center">
+                        <h3 class="text-dark">Business Loans</h3>
+                        <p class="text-dark">Working capital, inventory, and expansion for SMEs.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 px-4">
+                    <img src="public/asset/images/section_8.jpg" class="rounded-5" alt="Loan">
+                    <div class="pt-4 text-center">
+                        <h3 class="text-dark">Asset Financing</h3>
+                        <p class="text-dark">Vehicles, equipment, and essential devices.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="container mt-2 pt-3 pt-lg-5 pb-5">
+    <div class="row align-items-lg-center pt-md-3 pb-5 mb-2 mb-lg-4 mb-xl-5">
+        <div class="col-md-5 order-md-2 mb-4 mb-md-0">
+            <img src="public/asset/images/section_55.png">
+        </div>
+        <div class="col-md-7 order-md-1">
+            <div class="pe-xl-5 me-md-2 me-lg-4">
+                <h2 class="display-4 pb-3 text-dark">Handle life needs quickly and simply.</h2>
+                <p class="fs-3 text-start text-md-start pb-2 pb-md-3 mb-3 text-dark">You can now access quick loans in 5 mins with easy repayment terms!</p>
+                <div class="d-md-flex align-items-md-start">
+                    <a href="register/create_account.html" class="btn btn-info flex-shrink-0 me-md-4 mb-md-0 mb-sm-4 mb-3 rounded-pill">Apply Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="container pt-4 pt-lg-0 pb-4 pb-lg-5">
+    <div class="row align-items-lg-center pt-md-3 pb-5 mb-2 mb-lg-4 mb-xl-5">
+        <div class="col-md-6 order-md-1 mb-4 mb-md-0 text-center">
+            <img src="public/asset/images/section_3.png" width="400">
+        </div>
+        <div class="col-md-6 order-md-2">
+            <h2 class="h1 pb-3 pb-md-0 mb-md-5 text-dark">It only takes 5 minutes</h2>
+            <div class="steps">
+                <div class="step pt-0 pt-md-3 pb-5">
+                    <div class="step-number">
+                        <div class="step-number-inner text-info fs-md">01</div>
+                    </div>
+                    <div class="step-body d-flex align-items-center ps-xl-1">
+                        <div class="rellax ps-md-4 ps-xl-5" data-rellax-percentage="0.5" data-rellax-speed="0.4" data-disable-parallax-down="lg">
+                            <h3 class="h5 text-gray">Apply</h3>
+                            <p class="mb-0">Tell us what you need and the amount.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="step pt-0 pt-md-4 pb-5">
+                    <div class="step-number">
+                        <div class="step-number-inner text-info fs-md">02</div>
+                    </div>
+                    <div class="step-body d-flex align-items-center ps-xl-1">
+                        <div class="rellax ps-md-4 ps-xl-5" data-rellax-percentage="0.5" data-rellax-speed="0.5" data-disable-parallax-down="lg">
+                            <h3 class="h5 text-gray">Verify</h3>
+                            <p class="mb-0">Share basic KYC where needed.p>
+                        </div>
+                    </div>
+                </div>
+                <div class="step pt-0 pt-md-4 pb-5">
+                    <div class="step-number">
+                        <div class="step-number-inner text-info fs-md">03</div>
+                    </div>
+                    <div class="step-body d-flex align-items-center ps-xl-1">
+                        <div class="rellax ps-md-4 ps-xl-5" data-rellax-percentage="0.5" data-rellax-speed="0.4" data-disable-parallax-down="lg">
+                            <h3 class="h5 text-gray">Offer</h3>
+                            <p class="mb-0">Receive a clear offer with total cost shown upfront.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="step pt-0 pt-md-4 pb-5">
+                    <div class="step-number">
+                        <div class="step-number-inner text-info fs-md">04</div>
+                    </div>
+                    <div class="step-body d-flex align-items-center ps-xl-1">
+                        <div class="rellax ps-md-4 ps-xl-5" data-rellax-percentage="0.5" data-rellax-speed="0.4" data-disable-parallax-down="lg">
+                            <h3 class="h5 text-gray">Disburse</h3>
+                            <p class="mb-0">Funds go to you or the vendor.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="container py-5 mb-2 mt-md-2 mb-md-4 mt-lg-4 mb-lg-5">
+    <div class="row pt-xl-1 pb-xl-3 align-items-center justify-content-center">
+        <div class="col-md-4">
+            <h2 class="text-center text-md-start mx-auto mx-md-0 pt-md-2 fs-1 fw-semibold">Licensed and regulated, Yup!</h2>
+
+            <!-- Slider controls (Prev / next buttons) -->
+            <div class="d-flex justify-content-center justify-content-md-start pb-4 mb-2 pt-2 pt-md-4 mt-md-5">
+                <button type="button" id="prev-testimonial" class="btn btn-prev btn-icon btn-md me-2">
+                    <i class="bx bx-chevron-left"></i>
+                </button>
+                <button type="button" id="next-testimonial" class="btn btn-next btn-icon btn-md ms-2">
+                    <i class="bx bx-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="swiper mx-n2" data-swiper-options='{
+              "slidesPerView": 1,
+              "spaceBetween": 8,
+              "autoplay": true,
+              "loop": true,
+              "navigation": {
+                "prevEl": "#prev-testimonial",
+                "nextEl": "#next-testimonial"
+              },
+              "breakpoints": {
+                "500": {
+                  "slidesPerView": 2
+                },
+                "1000": {
+                  "slidesPerView": 2
+                },
+                "1200": {
+                  "slidesPerView": 2
+                }
+              }
+            }'>
+                <div class="swiper-wrapper">
+                                        <div class="swiper-slide h-auto pt-4">
+                        <figure class="d-flex flex-column px-2 px-sm-0 mb-0 mx-2">
+                            <div class="card position-relative border-0 shadow-sm pt-4 rounded-5 bg-gradient-primary">
+                                <figcaption class="d-flex align-items-center ps-4 pt-4">
+                                    <img src="storage/app/review/02k3PO8JVbKDlJnN7UGtSPPInm9qptoVeNsP0wLL.jpg" width="48" class="rounded-circle" alt="Jason Well">
+                                    <div class="ps-3">
+                                        <h4 class="fs-5 fw-semibold mb-0">Jason Well</h4>
+                                        <span class="fs-sm text-dark">CEO Lorem Ipsum</span>
+                                    </div>
+                                </figcaption>
+                                <blockquote class="card-body pb-3 mb-5">
+                                    <p class="mb-0 text-dark fs-4 fw-semibold">“Bajol Capital has been a lifesaver for me as a student in a foreign country”</p>
+                                </blockquote>
+                            </div>
+                        </figure>
+                    </div>
+                                        <div class="swiper-slide h-auto pt-4">
+                        <figure class="d-flex flex-column px-2 px-sm-0 mb-0 mx-2">
+                            <div class="card position-relative border-0 shadow-sm pt-4 rounded-5 bg-gradient-primary">
+                                <figcaption class="d-flex align-items-center ps-4 pt-4">
+                                    <img src="storage/app/review/tiFOAsLHLYqTp2nEkiRqp7siYukGEBE3qESS1kHT.jpg" width="48" class="rounded-circle" alt="Cadi Jules">
+                                    <div class="ps-3">
+                                        <h4 class="fs-5 fw-semibold mb-0">Cadi Jules</h4>
+                                        <span class="fs-sm text-dark">CEO Lorem Ipsum</span>
+                                    </div>
+                                </figcaption>
+                                <blockquote class="card-body pb-3 mb-5">
+                                    <p class="mb-0 text-dark fs-4 fw-semibold">“Bajol Capital has been a lifesaver for me as a student in a foreign country”</p>
+                                </blockquote>
+                            </div>
+                        </figure>
+                    </div>
+                                        <div class="swiper-slide h-auto pt-4">
+                        <figure class="d-flex flex-column px-2 px-sm-0 mb-0 mx-2">
+                            <div class="card position-relative border-0 shadow-sm pt-4 rounded-5 bg-gradient-primary">
+                                <figcaption class="d-flex align-items-center ps-4 pt-4">
+                                    <img src="storage/app/review/sF6AxGz1pCBh335dW5P4Tf11cM69m8Q3Yq3U6Dmx.jpg" width="48" class="rounded-circle" alt="JacK Mill">
+                                    <div class="ps-3">
+                                        <h4 class="fs-5 fw-semibold mb-0">JacK Mill</h4>
+                                        <span class="fs-sm text-dark">CEO Lorem Ipsum</span>
+                                    </div>
+                                </figcaption>
+                                <blockquote class="card-body pb-3 mb-5">
+                                    <p class="mb-0 text-dark fs-4 fw-semibold">“Bajol Capital has been a lifesaver for me as a student in a foreign country”</p>
+                                </blockquote>
+                            </div>
+                        </figure>
+                    </div>
+                                    </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="container pt-3 pb-5 pb-md-5">
+    <div class="card border-0">
+        <div class="card-body p-md-5 p-4 bg-size-cover rounded-5" style="background-image: url(public/asset/images/live.png);">
+            <div class="py-md-5 py-4 text-md-start">
+                <p class="display-6 text-white mb-1">What are you waiting for?</p>
+                <p class="fs-5 text-white">Get financing today.</p>
+                <div class="pt-md-5 pt-4 pb-md-2">
+                    <a href="register/create_account.html" class="btn btn-lg btn-light mx-2 rounded-pill">Apply Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><section class="container mt-2 pt-3 pt-lg-5 pb-5">
+    <h2 class="h3 text-center pb-3 pb-md-0 text-gray">Our Partners</h2>
+    <div class="swiper mx-n2" data-swiper-options='{
+          "slidesPerView": 2,
+          "pagination": {
+            "el": ".swiper-pagination",
+            "clickable": true
+          },
+          "breakpoints": {
+            "500": {
+              "slidesPerView": 3,
+              "spaceBetween": 8
+            },
+            "650": {
+              "slidesPerView": 4,
+              "spaceBetween": 8
+            },
+            "900": {
+              "slidesPerView": 5,
+              "spaceBetween": 8
+            },
+            "1100": {
+              "slidesPerView": 6,
+              "spaceBetween": 8
+            }
+          }
+        }'>
+        <div class="swiper-wrapper">
+                        <div class="swiper-slide py-3">
+                <div class="card card-body card-hover px-2 mx-2">
+                    <img src="storage/app/brand/JMrzjE3SZN1jxLoKVFKZicq58NqvILJRNJF7lEx9.svg" class="d-block mx-auto my-2" width="150" alt="Brand">
+                </div>
+            </div>
+                        <div class="swiper-slide py-3">
+                <div class="card card-body card-hover px-2 mx-2">
+                    <img src="storage/app/brand/jLUaA21JPmjs3KUj0BCVnpL6BBV30fnsD8vfc1w9.svg" class="d-block mx-auto my-2" width="150" alt="Brand">
+                </div>
+            </div>
+                        <div class="swiper-slide py-3">
+                <div class="card card-body card-hover px-2 mx-2">
+                    <img src="storage/app/brand/8g1m0KJ76WU58gyyqOAy4YYvLn2eZKSqM3ZdnA1w.svg" class="d-block mx-auto my-2" width="150" alt="Brand">
+                </div>
+            </div>
+                        <div class="swiper-slide py-3">
+                <div class="card card-body card-hover px-2 mx-2">
+                    <img src="storage/app/brand/OVSD1zu2K77urzbdoYAy8ozVhtzPi9YIUX0Fe8dc.svg" class="d-block mx-auto my-2" width="150" alt="Brand">
+                </div>
+            </div>
+                        <div class="swiper-slide py-3">
+                <div class="card card-body card-hover px-2 mx-2">
+                    <img src="storage/app/brand/IzqjdGAO4EGJKYWiDKGAqfN9DRevcgUPZebKv7n6.svg" class="d-block mx-auto my-2" width="150" alt="Brand">
+                </div>
+            </div>
+                        <div class="swiper-slide py-3">
+                <div class="card card-body card-hover px-2 mx-2">
+                    <img src="storage/app/brand/SEZ8wiBnYhSVG1Kmifjs0jx0cGXcp1kMi9FqSV4l.svg" class="d-block mx-auto my-2" width="150" alt="Brand">
+                </div>
+            </div>
+                        <div class="swiper-slide py-3">
+                <div class="card card-body card-hover px-2 mx-2">
+                    <img src="storage/app/brand/v6g8eNolrPIwwV4aNIOfTCuaHF1GBzBkNMyZaafp.svg" class="d-block mx-auto my-2" width="150" alt="Brand">
+                </div>
+            </div>
+                    </div>
+
+        <!-- Pagination (bullets) -->
+        <div class="swiper-pagination position-relative pt-2 mt-4"></div>
+    </div>
+</section>
+        <footer class="footer dark-mode border-top border-light py-5 bg-dark" data-jarallax data-img-position="0% 100%" data-speed="0.5">
+            <div class="container pt-lg-4">
+                <div class="row pb-5">
+                    <div class="col-xl-12 col-lg-12 col-md-12 pt-4 pt-md-1 pt-lg-0">
+                        <div id="footer-links" class="row">
+                            <div class="col-xl-3 col-lg-3 col-6">
+                                <h6 class="mb-2">Company</h6>
+                                <ul class="nav flex-column mb-2 mb-lg-0">
+                                                                        <li class="nav-item"><a href="https://google.com/" target="_blank" class="footer-link d-inline-block px-0 pt-1 pb-2">Careers</a></li>
+                                                                        <li class="nav-item"><a href="about.html" class="footer-link d-inline-block px-0 pt-1 pb-2">About</a></li>
+                                    <li class="nav-item"><a href="contact.html" class="footer-link d-inline-block px-0 pt-1 pb-2">Contact Us</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-xl-3 col-lg-3 col-6 pt-2 pt-lg-0">
+                                <h6 class="mb-2">Resources</h6>
+                                <ul class="nav flex-column mb-2 mb-lg-0 mb-3">
+                                    <li class="nav-item"><a href="help_center.html" class="footer-link d-inline-block px-0 pt-1 pb-2">Help Centre</a></li>
+                                    <li class="nav-item"><a href="blog.html" class="footer-link d-inline-block px-0 pt-1 pb-2">Blog</a></li>
+                                                                    </ul>
+                            </div>
+                            <div class="col-xl-3 col-lg-3 col-6 pt-2 pt-lg-0">
+                                <h6 class="mb-2">Legal</h6>
+                                <ul class="nav flex-column mb-2 mb-lg-0">
+                                    <li class="nav-item"><a href="terms.html" class="footer-link d-inline-block px-0 pt-1 pb-2">Terms &amp; Conditions</a></li>
+                                    <li class="nav-item"><a href="privacy.html" class="footer-link d-inline-block px-0 pt-1 pb-2">Privacy Policy</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-xl-3 col-lg-3 col-6 pt-2 pt-lg-0">
+                                <h6 class="mb-2">Contact</h6>
+                                <p class="fs-sm pb-lg-3 mb-0 text-dark"><a class="footer-link" href=#><i class="fal fa-envelope"></i> <span class="__cf_email__" data-cfemail="#">info@bajolcapital.com</span></a></p>
+                                <p class="fs-sm mb-3 text-dark"><a class="footer-link" href="tel:+2349061499756"><i class="fal fa-phone-volume"></i> +23490 6149 9756</a></p>
+                                <div class="d-flex mb-5">
+                                                                                                            <a href="https://facebook.com/" class="mx-2 text-white">
+                                        <i class="fab fa-facebook"></i>
+                                    </a>
+                                                                                                                                                <a href="https://instagram.com/" class="mx-2 text-white">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                                                                                                                                <a href="https://twitter.com/" class="mx-2 text-white">
+                                        <i class="fab fa-twitter"></i>
+                                    </a>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                                                <div class="btn-group dropdown mb-5">
+                            <button type="button" class="btn btn-outline-secondary btn-sm dropdown-toggle me-5 text-dark" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="fi fi-us me-2 fis fs-sm rounded-4 text-dark"></span> <span>English</span>
+                            </button>
+                            <div class="dropdown-menu my-1">
+                                                                <a class="dropdown-item" href="index.html"><span class="fi fi-us me-2 fis fs-sm rounded-4 text-dark"></span> English</a>
+                                                                <a class="dropdown-item" href="index.html"><span class="fi fi-fr me-2 fis fs-sm rounded-4 text-dark"></span> French</a>
+                                                                <a class="dropdown-item" href="index.html"><span class="fi fi-es me-2 fis fs-sm rounded-4 text-dark"></span> Spanish</a>
+                                                                <a class="dropdown-item" href="index.html"><span class="fi fi-ch me-2 fis fs-sm rounded-4 text-dark"></span> Chinese</a>
+                                                                <a class="dropdown-item" href="index.html"><span class="fi fi-ie me-2 fis fs-sm rounded-4 text-dark"></span> Hindi</a>
+                                                                <a class="dropdown-item" href="index.html"><span class="fi fi-de me-2 fis fs-sm rounded-4 text-dark"></span> German</a>
+                                                                <a class="dropdown-item" href="index.html"><span class="fi fi-pt me-2 fis fs-sm rounded-4 text-dark"></span> Portuguese</a>
+                                                            </div>
+                        </div>
+                                      
+                                                                                                       <p class="fs-sm pb-lg-3 mb-1 text-dark">D71, Dolphin Plaza, Corporation Drive,<br> Dolphin Estate, Ikoyi, Lagos, Nigeria.</p>
+                                            </div>
+                </div>
+                <div class="space-1">
+                    <!-- Copyright -->
+                    <div class="w-md-75 text-lg-center mx-lg-auto">
+                        <p class="small text-dark">© Bajol Capital. 2025. All rights reserved.</p>
+                     
+                    </div>
+                    <!-- End Copyright -->
+                </div>
+            </div>
+        </footer>
+
+
+        <!-- Back to top button -->
+        <a href="#top" class="btn-scroll-top" data-scroll>
+            <span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span>
+            <i class="btn-scroll-top-icon bx bx-chevron-up"></i>
+        </a>
+    </main>
+    
+    
+    <script data-cfasync="false" src="../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="public/front/vendor/jquery/dist/jquery.min.js" type="d2b5fa30d91b46ccf0f11348-text/javascript"></script>
+    <script src="public/front/vendor/bootstrap/dist/js/bootstrap.bundle.min.js" type="d2b5fa30d91b46ccf0f11348-text/javascript"></script>
+    <script src="public/front/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js" type="d2b5fa30d91b46ccf0f11348-text/javascript"></script>
+    <script src="public/front/vendor/swiper/swiper-bundle.min.js" type="d2b5fa30d91b46ccf0f11348-text/javascript"></script>
+    <script src="public/front/vendor/jarallax/dist/jarallax.min.js" type="d2b5fa30d91b46ccf0f11348-text/javascript"></script>
+    <script src="public/front/vendor/cleave.js/dist/cleave.min.js" type="d2b5fa30d91b46ccf0f11348-text/javascript"></script>
+    <script src="public/front/vendor/imagesloaded/imagesloaded.pkgd.min.js" type="d2b5fa30d91b46ccf0f11348-text/javascript"></script>
+    <script src="public/front/vendor/parallax-js/dist/parallax.min.js" type="d2b5fa30d91b46ccf0f11348-text/javascript"></script>
+    <script src="public/front/vendor/rellax/rellax.min.js" type="d2b5fa30d91b46ccf0f11348-text/javascript"></script>
+    <script src="public/front/vendor/shufflejs/dist/shuffle.min.js" type="d2b5fa30d91b46ccf0f11348-text/javascript"></script>
+    <script src="public/front/vendor/lightgallery/lightgallery.min.js" type="d2b5fa30d91b46ccf0f11348-text/javascript"></script>
+    <script src="public/front/vendor/lightgallery/plugins/video/lg-video.min.js" type="d2b5fa30d91b46ccf0f11348-text/javascript"></script>
+    <script src="public/front/vendor/%40lottiefiles/lottie-player/dist/lottie-player.js" type="d2b5fa30d91b46ccf0f11348-text/javascript"></script>
+    <script src="public/front/js/theme.min.js" type="d2b5fa30d91b46ccf0f11348-text/javascript"></script>
+    <script src="../../cdnjs.cloudflare.com/ajax/libs/lottie-web/5.7.6/lottie_svg.min.js" type="d2b5fa30d91b46ccf0f11348-text/javascript"></script>
+    <script src="../../cdn.jsdelivr.net/gh/orestbida/cookieconsent%40v2.8.9/dist/cookieconsent.js" type="d2b5fa30d91b46ccf0f11348-text/javascript"></script>
+    <script src="public/front/js/cookie.js" type="d2b5fa30d91b46ccf0f11348-text/javascript"></script>
+    <script src="public/front/js/toast.js" type="d2b5fa30d91b46ccf0f11348-text/javascript"></script>
+    <script src="public/asset/fonts/fontawesome/js/all.js" type="d2b5fa30d91b46ccf0f11348-text/javascript"></script>
+    
+    
+    
+    
+<script src="../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="d2b5fa30d91b46ccf0f11348-|49" defer></script><script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9057ad209a826929',t:'MTczNzQ2NjQwOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='../cdn-cgi/challenge-platform/h/g/scripts/jsd/672eb098a9f3/maind41d.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+
+
+</html>

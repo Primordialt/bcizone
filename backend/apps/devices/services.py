@@ -20,6 +20,9 @@ def register_device(user, request):
     device_id = generate_device_id(user, request)
 
     ip = request.META.get("REMOTE_ADDR", "") or ""
+    # GenericIPAddressField cannot store ""; API clients often have no REMOTE_ADDR.
+    if not ip:
+        ip = "127.0.0.1"
     user_agent = request.META.get("HTTP_USER_AGENT", "") or ""
 
     device, created = Device.objects.get_or_create(

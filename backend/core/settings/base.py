@@ -39,6 +39,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "apps.devices.middleware.DeviceMetaMiddleware",
@@ -86,6 +87,16 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTH_USER_MODEL = "accounts.User"
+
+# Browser clients (Next.js dev server, etc.)
+CORS_ALLOWED_ORIGINS = env.list(
+    "CORS_ALLOWED_ORIGINS",
+    default=[
+        "http://localhost:3000",
+        "http://127.0.0.1:3000",
+    ],
+)
+CORS_ALLOW_CREDENTIALS = True
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
@@ -138,12 +149,14 @@ LOGGING = {
     },
 }
 
-sentry_sdk.init(
-    dsn=env("SENTRY_DSN", default=None),
-    integrations=[
-        DjangoIntegration(),
-        CeleryIntegration(),
-    ],
-    traces_sample_rate=1.0,
-    send_default_pii=True,
-)
+SENTRY_DSN = env("SENTRY_DSN", default=None)
+if SENTRY_DSN:
+    sentry_sdk.init(
+        dsn=SENTRY_DSN,
+        integrations=[
+            DjangoIntegration(),
+            CeleryIntegration(),
+        ],
+        traces_sample_rate=1.0,
+        send_default_pii=False,
+    )

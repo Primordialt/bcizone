@@ -9,7 +9,7 @@ from rest_framework.views import APIView
 from rest_framework_simplejwt.views import TokenObtainPairView
 
 from .serializers import (
-    FraudAwareTokenObtainPairSerializer,
+    CustomTokenObtainPairSerializer,
     OTPVerifySerializer,
     SignupSerializer,
 )
@@ -82,7 +82,7 @@ class VerifyOTPView(APIView):
         return Response({"message": "Account activated."})
 
 
-class FraudAwareTokenObtainPairView(TokenObtainPairView):
-    serializer_class = FraudAwareTokenObtainPairSerializer
+class CustomTokenObtainPairView(TokenObtainPairView):
+    serializer_class = CustomTokenObtainPairSerializer
     throttle_classes = [ScopedRateThrottle]
     throttle_scope = "login"
