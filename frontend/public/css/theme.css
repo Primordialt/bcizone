@@ -4,7 +4,7 @@
 
 
 .text-gradient-primary {
-  background: linear-gradient(to right, #37f707, #0d7a12, #ff00ff);
+  background: linear-gradient(to right, #37f707, #0d7a12, #22c55e);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
