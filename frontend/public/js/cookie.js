@@ -1,4 +1,7 @@
-window.addEventListener('load', function () {
+function startCookieConsent() {
+    if (typeof initCookieConsent !== 'function') {
+        return;
+    }
 
     // obtain plugin
     var cc = initCookieConsent();
@@ -107,4 +110,27 @@ window.addEventListener('load', function () {
             }
         }
     });
-});
+}
+
+function whenCookieConsentReady() {
+    if (typeof initCookieConsent === 'function') {
+        startCookieConsent();
+        return;
+    }
+    var tries = 0;
+    var id = setInterval(function () {
+        tries += 1;
+        if (typeof initCookieConsent === 'function') {
+            clearInterval(id);
+            startCookieConsent();
+        } else if (tries > 50) {
+            clearInterval(id);
+        }
+    }, 50);
+}
+
+if (document.readyState === 'complete') {
+    whenCookieConsentReady();
+} else {
+    window.addEventListener('load', whenCookieConsentReady);
+}

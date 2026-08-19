@@ -154,9 +154,13 @@ export default function LoginPage() {
                           <label className="form-label fw-bolder text-dark fs-6 mb-0">
                             Password
                           </label>
-                          <Link href="/password/reset" className="link-info fs-6 fw-bolder">
+                          <span
+                            className="text-muted fs-6 fw-bolder"
+                            aria-disabled="true"
+                            title="Password reset is not available"
+                          >
                             Forgot Password ?
-                          </Link>
+                          </span>
                         </div>
                         <div className="position-relative">
                           <input
@@ -211,13 +215,13 @@ export default function LoginPage() {
             </div>
             <div className="d-flex flex-center flex-wrap fs-6 p-5 pb-0">
               <div className="d-flex flex-center fw-bold fs-6">
-                <Link href="/about" className="text-dark text-hover-primary px-2" target="_blank">
+                <span className="text-muted px-2" aria-disabled="true">
                   About
-                </Link>
-                <Link href="/terms" className="text-dark text-hover-primary px-2" target="_blank">
+                </span>
+                <Link href="/terms" className="text-dark text-hover-primary px-2">
                   Terms &amp; Conditions
                 </Link>
-                <Link href="/privacy" className="text-dark text-hover-primary px-2" target="_blank">
+                <Link href="/privacy" className="text-dark text-hover-primary px-2">
                   Privacy
                 </Link>
               </div>

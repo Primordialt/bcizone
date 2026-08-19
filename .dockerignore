@@ -1,0 +1,11 @@
+.git
+.cursor
+**/.env
+**/.env.local
+**/venv
+**/.venv
+**/__pycache__
+**/db.sqlite3
+**/node_modules
+frontend
+legacy-ui

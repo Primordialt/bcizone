@@ -1,5 +1,8 @@
 """
 Django settings for core project.
+
+Shared defaults. Environment-specific modules (local, production) import this
+and override as needed.
 """
 
 from datetime import timedelta
@@ -13,9 +16,12 @@ from sentry_sdk.integrations.django import DjangoIntegration
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 env = environ.Env()
-environ.Env.read_env(BASE_DIR / ".env")
+environ.Env.read_env(BASE_DIR / ".env", overwrite=False)
 
-SECRET_KEY = env("SECRET_KEY")
+SECRET_KEY = env(
+    "SECRET_KEY",
+    default="django-insecure-local-dev-key-not-for-production",
+)
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -39,6 +45,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "corsheaders.middleware.CorsMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -88,7 +95,8 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTH_USER_MODEL = "accounts.User"
 
-# Browser clients (Next.js dev server, etc.)
+# Browser clients (Next.js dev server, etc.). Production overrides this
+# without localhost defaults — set CORS_ALLOWED_ORIGINS there.
 CORS_ALLOWED_ORIGINS = env.list(
     "CORS_ALLOWED_ORIGINS",
     default=[
@@ -97,6 +105,9 @@ CORS_ALLOWED_ORIGINS = env.list(
     ],
 )
 CORS_ALLOW_CREDENTIALS = True
+
+# Local-safe default. Production reads CSRF_TRUSTED_ORIGINS from the environment.
+CSRF_TRUSTED_ORIGINS = env.list("CSRF_TRUSTED_ORIGINS", default=[])
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
@@ -121,10 +132,14 @@ SIMPLE_JWT = {
     "ROTATE_REFRESH_TOKENS": False,
 }
 
-CELERY_BROKER_URL = "redis://localhost:6379/0"
-CELERY_RESULT_BACKEND = "redis://localhost:6379/0"
+# Local defaults keep current developer workflow. Production requires env values.
+CELERY_BROKER_URL = env("CELERY_BROKER_URL", default="redis://localhost:6379/0")
+CELERY_RESULT_BACKEND = env("CELERY_RESULT_BACKEND", default="redis://localhost:6379/0")
 CELERY_ACCEPT_CONTENT = ["json"]
 CELERY_TASK_SERIALIZER = "json"
+
+# Off in production unless ENABLE_SENTRY_TEST_ENDPOINT is explicitly true.
+ENABLE_SENTRY_TEST_ENDPOINT = env.bool("ENABLE_SENTRY_TEST_ENDPOINT", default=False)
 
 LOGGING = {
     "version": 1,
@@ -150,6 +165,8 @@ LOGGING = {
 }
 
 SENTRY_DSN = env("SENTRY_DSN", default=None)
+# Safe default for production; override via env (e.g. 1.0 locally).
+SENTRY_TRACES_SAMPLE_RATE = env.float("SENTRY_TRACES_SAMPLE_RATE", default=0.1)
 if SENTRY_DSN:
     sentry_sdk.init(
         dsn=SENTRY_DSN,
@@ -157,6 +174,6 @@ if SENTRY_DSN:
             DjangoIntegration(),
             CeleryIntegration(),
         ],
-        traces_sample_rate=1.0,
+        traces_sample_rate=SENTRY_TRACES_SAMPLE_RATE,
         send_default_pii=False,
     )

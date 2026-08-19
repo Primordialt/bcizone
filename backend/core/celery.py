@@ -2,6 +2,7 @@ import os
 
 from celery import Celery
 
+# Default is local. Production must set DJANGO_SETTINGS_MODULE=core.settings.production
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "core.settings.local")
 
 app = Celery("core")
