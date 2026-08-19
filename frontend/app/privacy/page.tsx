@@ -10,6 +10,7 @@ import {
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
+  description: "Learn how BCI Zone collects, uses, and protects your personal information.",
 };
 
 export default function PrivacyPage() {

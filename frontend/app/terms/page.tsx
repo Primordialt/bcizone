@@ -9,7 +9,8 @@ import {
 } from "../public-site-chrome";
 
 export const metadata: Metadata = {
-  title: "Terms & conditions",
+  title: "Terms & Conditions",
+  description: "Read the terms and conditions that govern your use of BCI Zone services.",
 };
 
 export default function TermsPage() {

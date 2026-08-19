@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 
 import {
@@ -6,6 +7,17 @@ import {
   PublicSiteHeader,
   PublicSiteScripts,
 } from "./public-site-chrome";
+
+export const metadata: Metadata = {
+  title: "BCI Zone — Smart Loans for Every Need",
+  description:
+    "Apply for personal, business, and asset financing loans with flexible terms and quick approvals. Get funded in as little as 5 minutes.",
+  openGraph: {
+    title: "BCI Zone — Smart Loans for Every Need",
+    description:
+      "Apply for personal, business, and asset financing loans with flexible terms and quick approvals.",
+  },
+};
 
 export default function HomePage() {
   return (
