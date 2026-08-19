@@ -32,7 +32,7 @@ export function PublicSiteHeader({ variant }: { variant: "dark" | "light" }) {
             loading="lazy"
           />
         </a>
-        <div id="navbarNav" className="offcanvas offcanvas-end mt-3">
+        <div id="navbarNav" className="offcanvas offcanvas-end">
           <div className="offcanvas-header border-bottom">
             <h5 className="offcanvas-title">Menu</h5>
             <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>

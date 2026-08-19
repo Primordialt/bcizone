@@ -24,3 +24,60 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* ── Mobile fixes ────────────────────────────────────── */
+
+/* Offcanvas menu: force dark text on white bg so links are visible
+   when the navbar is navbar-dark (homepage dark header). */
+@media (max-width: 991.98px) {
+  .offcanvas .navbar-nav .nav-link,
+  .offcanvas .navbar-nav .nav-link.fw-medium {
+    color: #1a1a2e !important;
+  }
+
+  .offcanvas .offcanvas-header .offcanvas-title {
+    color: #1a1a2e;
+  }
+
+  /* Remove the top margin gap on the offcanvas panel */
+  .offcanvas.mt-3 {
+    margin-top: 0 !important;
+  }
+
+  /* Hero heading: scale down for small screens */
+  .dd-bg .display-5 {
+    font-size: 1.75rem;
+  }
+
+  .dd-bg .fs-3 {
+    font-size: 1.05rem !important;
+  }
+
+  /* Prevent images from overflowing on mobile */
+  section img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Tighten card sections so they don't feel too spaced out */
+  .col-md-4.px-4 {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    margin-bottom: 2rem;
+  }
+
+  /* Steps section: reduce excess padding */
+  .steps .step {
+    padding-bottom: 1.5rem !important;
+  }
+
+  /* CTA banner: better mobile padding */
+  .bg-size-cover .display-6 {
+    font-size: 1.5rem;
+  }
+
+  /* Footer columns: tighter spacing */
+  #footer-links .col-6 {
+    margin-bottom: 1.5rem;
+  }
+}
